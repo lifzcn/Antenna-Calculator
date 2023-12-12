@@ -1,7 +1,7 @@
 """
 # File       : main.py
 # Encoding   : utf-8
-# Date       ：2023/12/11
+# Date       ：2023/12/12
 # Author     ：LiFZ
 # Email      ：lifzcn@gmail.com
 # Description：
@@ -71,6 +71,9 @@ class mainWindow(QWidget, Ui_Form):
 
         # 贴片宽度显示
         self.lineEdit_5.setText(str(round(W * np.power(10.0, 3), 3)))
+
+        # 馈点位置显示
+        self.lineEdit_6.setText(str(round(X_Feed * np.power(10.0, 3), 3)))
 
     def exit(self):
         sys.exit(app.exec())
