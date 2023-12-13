@@ -32,6 +32,9 @@ class mainWindow(QWidget, Ui_Form):
     def slots(self):
         self.pushButton_1.clicked.connect(self.calculate)
         self.pushButton_2.clicked.connect(self.exit)
+        self.pushButton_3.clicked.connect(self.fun1)
+        self.pushButton_4.clicked.connect(self.fun2)
+        self.pushButton_5.clicked.connect(self.fun3)
 
     def calculate(self):
         # 光速
@@ -85,6 +88,30 @@ class mainWindow(QWidget, Ui_Form):
         image = QImage("antenna.png")
         pixmap = QPixmap.fromImage(image)
         self.label_8.setPixmap(pixmap)
+
+    def fun1(self):
+        self.lineEdit_8.clear()
+        epsilon_r = float(self.lineEdit_1.text())
+        r = float(self.lineEdit_15.text()) * np.power(10.0, -3)
+        R = float(self.lineEdit_7.text()) * np.power(10.0, -3)
+        Zo = 60.0 / np.sqrt(epsilon_r) * np.log(R / r)
+        self.lineEdit_8.setText(str(round(Zo, 3)))
+
+    def fun2(self):
+        self.lineEdit_11.clear()
+        epsilon_r = float(self.lineEdit_1.text())
+        r = float(self.lineEdit_9.text()) * np.power(10.0, -3)
+        Zo = float(self.lineEdit_10.text())
+        R = r * np.exp(Zo * np.sqrt(epsilon_r) / 60.0)
+        self.lineEdit_11.setText(str(round(R * np.power(10.0, 3), 3)))
+
+    def fun3(self):
+        self.lineEdit_14.clear()
+        epsilon_r = float(self.lineEdit_1.text())
+        R = float(self.lineEdit_12.text()) * np.power(10.0, -3)
+        Zo = float(self.lineEdit_13.text())
+        r = R / np.exp(Zo * np.sqrt(epsilon_r) / 60.0)
+        self.lineEdit_14.setText(str(round(r * np.power(10.0, 3), 3)))
 
 
 if __name__ == "__main__":
