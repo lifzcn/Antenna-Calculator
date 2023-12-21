@@ -8,11 +8,13 @@
 """
 
 import sys
-import numpy as np
 import time
+
+import numpy as np
 from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtGui import QImage, QPixmap
+from PyQt5.QtWidgets import QApplication, QWidget
+
 from client import Ui_Form
 
 
